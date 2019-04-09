@@ -30,17 +30,15 @@ function insert_point(sel_env, position, interpolation)
         -- Insert new point
         reaper.InsertEnvelopePoint( sel_env, i_pos, env_val, interpolation * 10.0, 0, false, true)
 
-        return 1
     else
         reaper.ReaScriptError( "No envelope selected" )
-
-        return 0
     end
 end
 
 -- Go through all selected items and insert points
 function items_loop(master_interpolation)
     if num_items then
+
         for i_num=0, num_items-1 do
 
             -- Item
@@ -54,8 +52,11 @@ function items_loop(master_interpolation)
                 sel_env = reaper.GetSelectedTrackEnvelope( 0 )
 
                 insert_point(sel_env, i_pos, master_interpolation)
+
+                reaper.Envelope_SortPoints( sel_env )
             end
         end
+
     else
         reaper.ReaScriptError( "No item(s) selected" )
     end
