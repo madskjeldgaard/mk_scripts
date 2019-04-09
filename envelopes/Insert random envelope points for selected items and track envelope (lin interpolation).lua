@@ -1,6 +1,6 @@
 --[[
-ReaScript Name: Insert random envelope points for selected items and track envelope (no interpolation)
-Description: Insert random envelope points for selected items and track envelope (no interpolation)
+ReaScript Name: Insert random envelope points for selected items and track envelope (random interpolation)
+Description: Insert random envelope points for selected items and track envelope (random interpolation)
 Instructions: Select items in a track and select an envelope in the track, run the script
 Category: Here some infos.
 Author: Mads Kjeldgaard
@@ -14,8 +14,9 @@ Forum Thread URl: http://forum.cockos.com/***.html
 Version: 1.0
 REAPER: 5.973
 ]]
+
 -- USER AREA
-envelope_interpolation=0.1
+envelope_interpolation=0.7
 
 -- Import the core package
 package.path=reaper.GetResourcePath().."/Scripts/Mads Scripts/envelopes/lib/ran_env_lib.lua"
