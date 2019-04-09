@@ -2,6 +2,8 @@ local ran_env_lib= {}
 
 -- Insert random envelope points for selected items and track envelope (no interpolation)
 num_items = reaper.CountSelectedMediaItems( 0 )
+--
+-- num_items = reaper.CountTrackMediaItems( reaper.GetSelectedTrack( 0, 0) ) 
 
 -- MAIN
 function ran_env_lib.main(envelope_interpolation)
@@ -17,18 +19,18 @@ function ran_env_lib.main(envelope_interpolation)
 end
 
 -- Insert envelope point
-function insert_point(sel_env, position, interpolation)
-    if sel_env then 
+function insert_point(in_env, position, interpolation)
+    if in_env then 
 
         -- Generate a value
-        env_val = math.random(0, 1000) / 1000
+        local env_val = math.random(0, 1000) / 1000
         env_val = env_val * 2.0 -- Envelope values are 0.0-2.0
 
         -- Delete old point
-        reaper.DeleteEnvelopePointRange( sel_env, i_pos, i_pos+1 )
+        reaper.DeleteEnvelopePointRange( in_env, position, position+1 )
 
         -- Insert new point
-        reaper.InsertEnvelopePoint( sel_env, i_pos, env_val, interpolation * 10.0, 0, false, true)
+        reaper.InsertEnvelopePoint( in_env, position, env_val, interpolation * 10.0, 0, false, false)
 
     else
         reaper.ReaScriptError( "No envelope selected" )
@@ -42,17 +44,19 @@ function items_loop(master_interpolation)
         for i_num=0, num_items-1 do
 
             -- Item
-            item = reaper.GetMediaItem( 0, i_num )
+            local item = reaper.GetSelectedMediaItem( 0, i_num )
 
             if item then
                 -- Position
-                i_pos = reaper.GetMediaItemInfo_Value( item, "D_POSITION" ) 
+                local i_pos = reaper.GetMediaItemInfo_Value( item, "D_POSITION" ) 
 
                 -- Selected envelope
-                sel_env = reaper.GetSelectedTrackEnvelope( 0 )
+                local sel_env = reaper.GetSelectedTrackEnvelope( 0 )
 
+                -- Set new point
                 insert_point(sel_env, i_pos, master_interpolation)
 
+                -- Sort the new points in time 
                 reaper.Envelope_SortPoints( sel_env )
             end
         end
