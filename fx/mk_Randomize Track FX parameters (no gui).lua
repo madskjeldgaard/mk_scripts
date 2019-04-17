@@ -179,19 +179,10 @@ function run()
     end
 
     -- gen pattern
-    rand_params = ENGINE_GenerateRandPatt() 
-
-    -- gen pattern
     rand_params = ENGINE_GenerateRandPatt(true) 
 
     -- morph
     ENGINE_SetParams()
-
-    if morph_val ~= nil then
-        last_morph_val = morph_val
-    else
-        morph_val = last_morph_val
-    end
 
 end
 
