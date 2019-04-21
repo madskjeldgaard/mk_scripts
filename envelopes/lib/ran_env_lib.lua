@@ -24,7 +24,7 @@ function insert_point(in_env, position, interpolation)
 
         -- Generate a value
         local env_val = math.random(0, 1000) / 1000
-        env_val = env_val * 2.0 -- Envelope values are 0.0-2.0
+        env_val = env_val * 1.0 -- Envelope values are 0.0-2.0
 
         -- Delete old point
         reaper.DeleteEnvelopePointRange( in_env, position, position+1 )

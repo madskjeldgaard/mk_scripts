@@ -30,7 +30,7 @@ protected_table = {
     "feed",
 
     "attack",
-    "decay",
+    --"decay",
     "sustain",
     "release",
 
