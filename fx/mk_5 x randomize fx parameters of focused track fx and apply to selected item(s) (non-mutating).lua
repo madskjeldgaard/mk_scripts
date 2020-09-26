@@ -16,7 +16,7 @@ iterations=5
 mutate=false
 
 -- 
-package.path=reaper.GetResourcePath().."/Scripts/Mads Scripts/fx/lib/lib_recursivelyfocusedrandfx.lua"
+package.path=reaper.GetResourcePath().."/Scripts/mk_scripts/fx/lib/lib_recursivelyfocusedrandfx.lua"
 recursive_ran_fx = require("recursivelyfocusedrandfx")
 
 recursive_ran_fx.main(iterations, mutate)

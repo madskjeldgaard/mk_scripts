@@ -18,7 +18,7 @@ REAPER: 5.973
 envelope_interpolation=0.1
 
 -- Import the core package
-package.path=reaper.GetResourcePath().."/Scripts/Mads Scripts/envelopes/lib/ran_env_lib.lua"
+package.path=reaper.GetResourcePath().."/Scripts/mk_scripts/envelopes/lib/ran_env_lib.lua"
 ran = require("ran_env_lib")
 
 ran.main(envelope_interpolation)
