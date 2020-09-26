@@ -1,4 +1,4 @@
-fraction_size=0.1
+fraction_size=(-0.01)
 
 ------------------------
 package.path=reaper.GetResourcePath().."/Scripts/mk_scripts/items/lib/lib_nudge-algos.lua"
